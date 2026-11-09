@@ -1,0 +1,83 @@
+{
+ "model": "xt_rope_w256",
+ "repo": "(new) hybrid with sliding-window attention",
+ "target_repo": "LM_Dec_Long_RoPE_W256",
+ "category": "Long",
+ "upstream": "lucidrains/x-transformers (MIT), pip 2.31.7 + torch.nn",
+ "unified": [
+  "control: RoPE decoder limited to the last 256 tokens, no recurrent layer"
+ ],
+ "torch": "2.5.1+cu124",
+ "gpu": "NVIDIA GeForce RTX 3070 Ti",
+ "stage": "scaling",
+ "started": "2026-11-09 09:14:50",
+ "smoke": false,
+ "rows": [
+  {
+   "len": 512,
+   "train": {
+    "peak_mb": 159.2,
+    "ms": 30.0,
+    "dtype": "bf16"
+   },
+   "infer": {
+    "peak_mb": 59.4,
+    "ms": 13.0,
+    "dtype": "bf16"
+   }
+  },
+  {
+   "len": 1024,
+   "train": {
+    "peak_mb": 305.4,
+    "ms": 32.0,
+    "dtype": "bf16"
+   },
+   "infer": {
+    "peak_mb": 108.7,
+    "ms": 13.0,
+    "dtype": "bf16"
+   }
+  },
+  {
+   "len": 2048,
+   "train": {
+    "peak_mb": 815.4,
+    "ms": 37.9,
+    "dtype": "bf16"
+   },
+   "infer": {
+    "peak_mb": 271.8,
+    "ms": 15.0,
+    "dtype": "bf16"
+   }
+  },
+  {
+   "len": 4096,
+   "train": {
+    "peak_mb": 2583.3,
+    "ms": 87.4,
+    "dtype": "bf16"
+   },
+   "infer": {
+    "peak_mb": 856.2,
+    "ms": 39.9,
+    "dtype": "bf16"
+   }
+  },
+  {
+   "len": 8192,
+   "train": {
+    "peak_mb": 9071.0,
+    "ms": 688.5,
+    "dtype": "bf16"
+   },
+   "infer": {
+    "peak_mb": 3056.8,
+    "ms": 134.2,
+    "dtype": "bf16"
+   }
+  }
+ ],
+ "seconds": 6.7
+}
