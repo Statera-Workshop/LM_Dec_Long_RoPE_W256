@@ -1,0 +1,50 @@
+{
+ "model": "xt_rope_w256",
+ "repo": "(new) hybrid with sliding-window attention",
+ "target_repo": "LM_Dec_Long_RoPE_W256",
+ "category": "Long",
+ "upstream": "lucidrains/x-transformers (MIT), pip 2.31.7 + torch.nn",
+ "unified": [
+  "control: RoPE decoder limited to the last 256 tokens, no recurrent layer"
+ ],
+ "torch": "2.5.1+cu124",
+ "gpu": "NVIDIA GeForce RTX 3070 Ti",
+ "stage": "lm08",
+ "started": "2026-11-09 20:59:57",
+ "smoke": false,
+ "steps": 6000,
+ "capped": false,
+ "bf16": true,
+ "final_bits": 3.30807149883815,
+ "test": {
+  "512": {
+   "bits_full": 3.2851241976988272
+  },
+  "2048": {
+   "bits_full": 3.255718561058641,
+   "bits_last512": 3.256162921232808,
+   "gain_from_history": 0.0004443601741668246
+  },
+  "8192": {
+   "bits_full": 3.273497955522188,
+   "bits_last512": 3.2740953372599595,
+   "gain_from_history": 0.000597381737771574
+  }
+ },
+ "config": {
+  "train_len": 512,
+  "test_lens": [
+   512,
+   2048,
+   8192
+  ],
+  "batch": 16,
+  "steps": 6000,
+  "eval_every": 1000,
+  "eval_samples": 64,
+  "tail": 256,
+  "max_hours": 1.5
+ },
+ "minutes": 10.0,
+ "seconds": 604.5
+}
